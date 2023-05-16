@@ -5,11 +5,36 @@
 
 #nav{
   margin-top: 0px;
-  background-color: #FEC601;
+  background-color: #0c7c98;
+}
+#postagem-button{
+ color: #84DCC6;
+ font-size: 30px !important;
+ text-transform: none;
 }
 
-Button{
-  display: flex;
-  flex-direction: column;
-  gap:10px;
+#buttonperficon{
+  color: #ffffff;
+}
+
+#perfil-button{
+  padding:0px;
+  height: 100%;
+}
+
+h6{
+  color: #ffffff;
+  font-size: 20px !important;
+}
+
+h5{
+  color: #FFFEF4;
+}
+
+.navlist{
+  align-items: center;
+}
+
+#logo{
+  font-weight: bolder;
 }

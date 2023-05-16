@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Typography} from '@material-ui/core';
+import {Button, Grid, Typography} from '@material-ui/core';
 import './Home.css';
 
 function Home() {
@@ -11,6 +11,7 @@ function Home() {
       <Typography variant="h6">
         ERA UMA VEZ, UM LUGARZINHO NO MEIO DO NADA, COM SABOR DE CHOCOLATE, E CHEIRO DE TERRA MOLHADA
       </Typography>
+      
     </Grid>
   );
 }

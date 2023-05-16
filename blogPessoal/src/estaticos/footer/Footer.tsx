@@ -8,13 +8,7 @@ import './footer.css'
 
 function Footer(){
   return(
-    <Box
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '100vh',
-    }}
-  >
+    
    
     <Box
       component="footer" id="footer"
@@ -30,7 +24,7 @@ function Footer(){
         </Typography>
       </Container>
     </Box>
-  </Box>
+ 
   );
 }
 

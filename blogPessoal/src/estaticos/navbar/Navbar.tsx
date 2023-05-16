@@ -6,6 +6,7 @@ import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 import {Box} from '@mui/material';
 import SentimentSatisfiedAltRoundedIcon from '@mui/icons-material/SentimentSatisfiedAltRounded';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [anchorElpost, setAnchorElpost] = React.useState<null | HTMLElement>(null);
@@ -27,20 +28,22 @@ function Navbar() {
   return (
   <AppBar position="static">
   <Toolbar variant="dense" id="nav">
-    <Grid container justifyContent={'space-between'}>
+    <Grid container justifyContent={'space-between'} className="navlist">
           <Box style={{ cursor: "pointer" }} >
-          <Typography variant="h5" color="inherit">
-              Vergonha Alheia
+          <Typography variant="h5" id="logo">
+              Blog Pessoal
           </Typography>
       </Box>
 
-      <Box display="flex" justifyContent="start">
+      <Box display="flex" justifyContent="start" className="navlist">
           <Box mx={1} style={{ cursor: "pointer" }}>
-              <Typography variant="h6" color="inherit">
+            <Link to='/home'>
+              <Typography variant="h6">
                   home
               </Typography>
+            </Link>
           </Box>
-          <Grid item>
+        <Box display="flex" justifyContent="start">
           <Button
           id="postagem-button"
           aria-controls={openpost ? 'postagem-menu' : undefined}
@@ -48,11 +51,13 @@ function Navbar() {
           aria-expanded={openpost ? 'true' : undefined}
           onClick={handleClickpost}
           >
-            <Typography variant="h6" color="inherit">
+            <Box mx={1} style={{ cursor: "pointer" }}>
+            <Typography variant="h6">
               postagens
             </Typography>
+            </Box>
           </Button>
-          </Grid>
+          </Box>
           <Menu
           id="menupostagem"
           anchorEl={anchorElpost}
@@ -67,7 +72,7 @@ function Navbar() {
           <MenuItem onClick={handleClosepost}>Cadastrar Tema</MenuItem>
         </Menu>
       
-          <Grid item>
+        <Box display="flex" justifyContent="start">
         <Button
           id="perfil-button"
           aria-controls={openperf ? 'perfil-menu' : undefined}
@@ -75,9 +80,12 @@ function Navbar() {
           aria-expanded={openperf ? 'true' : undefined}
           onClick={handleClickperf}
         >
-            <SentimentSatisfiedAltRoundedIcon/>
+            <SentimentSatisfiedAltRoundedIcon 
+            id="buttonperficon"
+            sx={{ fontSize: 35 }}
+            />
         </Button>
-          </Grid>
+          </Box>
         <Menu
           id="menuperfil"
           anchorEl={anchorElperf}

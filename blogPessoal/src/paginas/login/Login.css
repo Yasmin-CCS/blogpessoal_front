@@ -1,0 +1,21 @@
+.loginbutton{
+  background: #360568;
+  size: "small";
+  width: 120px;
+}
+
+.loginform{
+  background-color:rgba(255, 255, 255, 0.266);
+  padding: 20px;
+  border-radius: 5%;
+  
+}
+
+.loginpage{
+  background: linear-gradient(150deg, #82C0CC 8%, #16697A 89%);
+}
+
+h3{
+  color: #fff
+
+}
