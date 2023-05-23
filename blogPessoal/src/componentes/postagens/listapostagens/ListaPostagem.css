@@ -1,0 +1,21 @@
+.postagembox h6, .postagembox h5{
+  color: brown;
+}
+
+.postagembox {
+  display:flex;
+   flex-direction:column;
+   
+}
+
+.boxlist{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-content:space-around;
+  width:100%;
+  gap:50px;
+  padding-left: 80px;
+  padding-right: 80px;
+
+}

@@ -38,7 +38,7 @@ function Navbar() {
       <Box display="flex" justifyContent="start" className="navlist">
           <Box mx={1} style={{ cursor: "pointer" }}>
             <Link to='/home'>
-              <Typography variant="h6">
+              <Typography variant="h6" className='txtdecorationnone'>
                   home
               </Typography>
             </Link>
@@ -66,8 +66,10 @@ function Navbar() {
           MenuListProps={{
             'aria-labelledby': 'postagem-button',
           }}
-        >          
-          <MenuItem onClick={handleClosepost}>Minhas Postagens</MenuItem>
+          >          
+          <Link to='/home'>
+          <MenuItem onClick={handleClosepost} className='txtdecorationnone'>Minhas Postagens</MenuItem>
+          </Link>
           <MenuItem onClick={handleClosepost}>Meus Temas</MenuItem>
           <MenuItem onClick={handleClosepost}>Cadastrar Tema</MenuItem>
         </Menu>

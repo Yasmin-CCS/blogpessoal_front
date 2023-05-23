@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Space+Mono&display=swap');
+
+.cadastrarbutton{
+  size: "small";
+  width: 120px;
+  background-color: #35bcd7bb !important;
+  border-color: rgba(250, 235, 215, 0) !important;
+
+  
+}
+.cadastrarbutton :hoover{
+  background-color: #e70a0a5b !important;
+}
+
+
+
+
+.cadastrotitle{
+  color:#4ECFBA;
+}
+
+
+
+.cadastrarbuttontxt {
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  color: rgb(255, 255, 255);
+  text-transform: none;
+  letter-spacing: 2px !important;
+}
+
+.janelacadastrar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  
+  background-image:url('src/assets/mar.jpg');
+  background-attachment: fixed;
+    
+  
+  margin-right: 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+  
+  background-repeat: no-repeat;
+  
+  background-size:fill;
+  background-position-y:center;
+  /* calc é uma função que irá calcular e retornar um valor */
+  min-height: 50%; /* 100vh - 48px que é a altura do NavBar/Menu */
+}
+
+.cadastrarform{
+  width: 50%;
+
+  padding: 20px;
+  color: #82C0CC;
+  background-color: #add5dddb;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+}
+
+
+.cadastrarform h3{
+  color: #1aa7c3bb;
+  font-family: "Lobster", cursive !important;
+}
+

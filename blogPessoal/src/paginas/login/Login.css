@@ -1,21 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Space+Mono&display=swap');
+
 .loginbutton{
-  background: #360568;
   size: "small";
   width: 120px;
+  background-color: #0a80e7a3 !important;
+  border-color: rgba(250, 235, 215, 0) !important;
+
+  
+}
+.loginbutton :hoover{
+  background-color: #e70a0a5b !important;
+}
+
+.buttons{
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-arround;
+  gap: 5px;
+}
+
+#cadastrarlinkbuttontxt{
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+
+#cadastrarlinkbutton{
+  padding: 0px;
+  background-color: #447eb094 !important;
+}
+
+.loginbuttontxt {
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  color: antiquewhite;
+  text-transform: none;
+  letter-spacing: 2px !important;
 }
 
 .loginform{
-  background-color:rgba(255, 255, 255, 0.266);
+  background-color:rgba(255, 255, 255, 0.438);
   padding: 20px;
   border-radius: 5%;
-  
+  width: 300px;
+  margin-top: 80px;
 }
 
 .loginpage{
-  background: linear-gradient(150deg, #82C0CC 8%, #16697A 89%);
+  
+  background-image:url('src/assets/sky.png');
+  background-attachment: fixed;
+  
+  border-radius: 30px;
+
+  margin: auto;
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-position: center;
+  /* calc é uma função que irá calcular e retornar um valor */
+  min-height: calc(80vh - 48px); /* 100vh - 48px que é a altura do NavBar/Menu */
+  min-width: calc(150vh - 60px);
+
+  display: flex;
 }
 
 h3{
-  color: #fff
+  color: #0A81E7;
+  font-family: "Lobster", cursive !important;
+}
 
+#senha:hover {
+ 
+  
 }

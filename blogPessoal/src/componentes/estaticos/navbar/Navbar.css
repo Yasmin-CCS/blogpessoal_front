@@ -5,7 +5,7 @@
 
 #nav{
   margin-top: 0px;
-  background-color: #0c7c98;
+  background-color: #C3BAB0;
 }
 #postagem-button{
  color: #84DCC6;
@@ -37,4 +37,8 @@ h5{
 
 #logo{
   font-weight: bolder;
+}
+
+.txtdecorationnone{
+  text-decoration: none !important;
 }
