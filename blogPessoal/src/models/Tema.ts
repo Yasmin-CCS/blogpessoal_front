@@ -1,6 +1,6 @@
 interface Tema {
   id: number
-  decricao: string
+  descricao: string
 
 }
 

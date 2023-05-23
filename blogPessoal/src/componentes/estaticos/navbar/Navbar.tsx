@@ -55,6 +55,7 @@ function Navbar() {
             <Typography variant="h6">
               postagens
             </Typography>
+            
             </Box>
           </Button>
           </Box>
@@ -67,10 +68,15 @@ function Navbar() {
             'aria-labelledby': 'postagem-button',
           }}
           >          
-          <Link to='/home'>
+          
+          <Link to='/postagens'>
           <MenuItem onClick={handleClosepost} className='txtdecorationnone'>Minhas Postagens</MenuItem>
           </Link>
+
+          <Link to='/postagens'>
           <MenuItem onClick={handleClosepost}>Meus Temas</MenuItem>
+          </Link>
+
           <MenuItem onClick={handleClosepost}>Cadastrar Tema</MenuItem>
         </Menu>
       

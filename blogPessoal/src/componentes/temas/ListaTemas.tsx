@@ -1,20 +1,20 @@
 import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import './ListaPostagem.css'
+import './ListaTemas.css'
 import { TextFormat } from "@material-ui/icons";
-import Postagem from "../../../models/Postagem";
+import Tema from "../../models/Tema";
 import useLocalStorage from "react-use-localstorage";
-import { busca } from "../../../service/Service";
+import { busca } from "../../service/Service";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
 
-function ListaPostagens() {
-const [postagens, setPostagem] =useState<Postagem[]>([])
+function ListaTemas() {
+const [postagens, setTema] =useState<Tema[]>([])
 const navigate = useNavigate();
 const [token, setToken] = useLocalStorage ('token');
 
-function getPostagem() {
-  busca('/postagens', setPostagem, {
+function getTema() {
+  busca('/temas', setTema, {
       headers: {
         Authorization: token
       }
@@ -22,7 +22,7 @@ function getPostagem() {
 }
 
   useEffect(() => {
-    getPostagem()
+    getTema()
   }, [])
 
   useEffect(() => {
@@ -34,16 +34,15 @@ function getPostagem() {
 
   return(
     <>
-    {postagens.map((postagem) => (
+    {postagens.map((tema) => (
       
       <Grid container>
         <Box className="boxlist">
           <Card className="postagembox" >
             <CardContent>
-              <Typography><h5>Título da Postagem{postagem.titulo}</h5></Typography>
-              <Typography><h4>Postagem: {postagem.id}</h4></Typography>
-              <Typography><h6>{postagem.texto}</h6></Typography>
-              <Typography><h6>{postagem.data}</h6></Typography>
+              <Typography><h5>{tema.descricao}</h5></Typography>
+              <Typography><h4>Tema n°: {tema.id}</h4></Typography>
+
             </CardContent>
             <CardActions>
               <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -65,4 +64,4 @@ function getPostagem() {
   );
 }
 
-export default ListaPostagens
+export default ListaTemas;
