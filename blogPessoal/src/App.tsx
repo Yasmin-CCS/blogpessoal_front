@@ -7,8 +7,8 @@ import Cadastrar from './paginas/cadastrar/Cadastrar';
 import Navbar from './componentes/estaticos/navbar/Navbar';
 import './App.css';
 import { Grid } from '@mui/material';
-import ListaPostagens from './componentes/postagens/listapostagens/ListaPostagens';
-import ListaTemas from './componentes/temas/ListaTemas';
+import ListaPostagem from './componentes/postagens/listapostagem/ListaPostagem';
+import ListaTema from './componentes/temas/ListaTema';
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
           <Route path='/login' element={<Login />}/>  
           <Route path='/home' element={<Home />}/>
           <Route path='/cadastrar' element={<Cadastrar />}/>
-          <Route path='/postagens' element={<ListaPostagens />}/>
-          <Route path='/temas' element={<ListaTemas />}/>
+          <Route path='/postagens' element={<ListaPostagem />}/>
+          <Route path='/temas' element={<ListaTema />}/>
 
           
         </Routes>

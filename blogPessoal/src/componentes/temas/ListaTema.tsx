@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import './ListaTemas.css'
+import './ListaTema.css'
 import { TextFormat } from "@material-ui/icons";
 import Tema from "../../models/Tema";
 import useLocalStorage from "react-use-localstorage";
@@ -8,7 +8,7 @@ import { busca } from "../../service/Service";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
 
-function ListaTemas() {
+function ListaTema() {
 const [postagens, setTema] =useState<Tema[]>([])
 const navigate = useNavigate();
 const [token, setToken] = useLocalStorage ('token');
@@ -64,4 +64,4 @@ function getTema() {
   );
 }
 
-export default ListaTemas;
+export default ListaTema;

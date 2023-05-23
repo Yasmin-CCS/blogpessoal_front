@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
-import ListaPostagens from '../listapostagens/ListaPostagens';
+import ListaPostagem from '../listapostagem/ListaPostagem';
 
 
 function TabsPostagem() {
@@ -19,11 +19,11 @@ function TabsPostagem() {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }} display={'flex'} justifyContent={"center"}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Postagens" value="1"/>
+            <Tab  label="Postagens" value="1"/>
             <Tab label="Sobre" value="2"/>
         </TabList>
         </Box>
-        <TabPanel value="1"><ListaPostagens/></TabPanel>
+        <TabPanel value="1"><ListaPostagem/></TabPanel>
         <TabPanel value="2">Sobre</TabPanel>
       </TabContext>
     </Box>

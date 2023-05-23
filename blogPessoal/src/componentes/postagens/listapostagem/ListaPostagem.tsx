@@ -8,7 +8,7 @@ import { busca } from "../../../service/Service";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
 
-function ListaPostagens() {
+function ListaPostagem() {
 const [postagens, setPostagem] =useState<Postagem[]>([])
 const navigate = useNavigate();
 const [token, setToken] = useLocalStorage ('token');
@@ -65,4 +65,4 @@ function getPostagem() {
   );
 }
 
-export default ListaPostagens
+export default ListaPostagem
