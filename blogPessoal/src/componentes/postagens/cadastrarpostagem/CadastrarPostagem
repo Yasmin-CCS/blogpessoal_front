@@ -1,0 +1,101 @@
+import { Box, Button, Grid, TextField, Typography } from "@mui/material"
+import React, { ChangeEvent, useEffect, useState } from "react"
+import Postagem from "../../../models/Postagem";
+import useLocalStorage from "react-use-localstorage";
+import { useNavigate, useParams } from "react-router-dom";
+import { buscaId, post, put } from "../../../service/Service";
+
+
+function CadastrarPostagem() {
+  const [postagem, setPostagem] = useState<Postagem>({
+    id:0,
+    titulo:'',
+    texto:'',
+    data: '',
+    tema: null,
+    usuario: null
+  })
+  const{ id} = useParams<{id: string}>();
+  const [token, setToken] = useLocalStorage('token');
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(token === ''){
+      alert('Por favor efetue o Login para acessar essa página')
+      navigate('/login')
+    }
+  }, [token])
+
+  useEffect(() => {
+    if(id !== undefined){
+      findById(id)
+    }
+  }, [id])
+
+  async function findById(id:string) {
+    buscaId(`/postagens/${id}`, setPostagem,{
+      headers: {
+        Authorization: token
+      }
+    })
+  }
+
+  function updatedPostagem (event: ChangeEvent<HTMLInputElement>) {
+    setPostagem({
+      ...postagem,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault()
+    console.log('postagem ' + JSON.stringify(postagem))
+
+    if (id !== undefined) {
+      console.log(postagem)
+      put('/postagens', postagem, setPostagem, {
+        headers: {
+          Authorization: token
+        }
+      })
+      alert('Postagem atualizada com sucesso');
+    } else {
+      post('/temas', postagem, setPostagem, {
+        headers: {
+          Authorization: token
+        }
+      })
+      alert('Postagem cadastrada com sucesso')
+    }
+    navigate('/postagens')
+  }
+
+  return (
+    <>
+       <Grid container className='main'style={{ minHeight: '100vh' }}>
+        <Grid>
+          <form onSubmit={onSubmit}>
+            <Box>
+              <Typography >
+              Cadastrar Postagem
+              </Typography>
+              <TextField 
+              label='Título do tema' 
+              name='titulo' 
+              type='text' 
+              value={postagem.titulo} 
+              onChange={(event:ChangeEvent<HTMLInputElement>) => updatedPostagem(event)}>
+
+              </TextField>
+              <Button type='submit'>Cadastrar</Button>
+            </Box>
+
+          </form>
+             
+        </Grid>
+        </Grid>
+    </>
+  );
+}
+
+export default CadastrarPostagem

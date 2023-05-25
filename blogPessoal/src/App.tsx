@@ -9,6 +9,7 @@ import './App.css';
 import { Grid } from '@mui/material';
 import ListaPostagem from './componentes/postagens/listapostagem/ListaPostagem';
 import ListaTema from './componentes/temas/ListaTema';
+import CadastrarTema from './componentes/temas/cadastrartema/CadastrarTema';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           <Route path='/cadastrar' element={<Cadastrar />}/>
           <Route path='/postagens' element={<ListaPostagem />}/>
           <Route path='/temas' element={<ListaTema />}/>
+          <Route path='/formulariotema' element={<CadastrarTema />}/>
+          <Route path='/formulariotema/:id' element={<CadastrarTema />}/>
+          
 
           
         </Routes>

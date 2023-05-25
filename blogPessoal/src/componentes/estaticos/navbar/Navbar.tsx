@@ -6,7 +6,8 @@ import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 import {Box} from '@mui/material';
 import SentimentSatisfiedAltRoundedIcon from '@mui/icons-material/SentimentSatisfiedAltRounded';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
 function Navbar() {
   const [anchorElpost, setAnchorElpost] = React.useState<null | HTMLElement>(null);
@@ -25,6 +26,16 @@ function Navbar() {
   const handleCloseperf = () => {
     setAnchorElperf(null);
   };
+
+  const[token, setToken] =useLocalStorage('token');
+  const navigate = useNavigate();
+
+  function logout(){
+    setToken('')
+    alert('Usuario deslogado')
+    navigate('/login')
+  }
+
   return (
   <AppBar position="static">
   <Toolbar variant="dense" id="nav">
@@ -72,12 +83,16 @@ function Navbar() {
           <Link to='/postagens'>
           <MenuItem onClick={handleClosepost} className='txtdecorationnone'>Minhas Postagens</MenuItem>
           </Link>
-
-          <Link to='/postagens'>
+          <Link to='/formulariopostagem'>
+          <MenuItem onClick={handleClosepost}>Cadastrar Postagem</MenuItem>
+          </Link>
+        </Menu>
+          <Link to='/temas'>
           <MenuItem onClick={handleClosepost}>Meus Temas</MenuItem>
           </Link>
-
+          <Link to='/formulariotema'>
           <MenuItem onClick={handleClosepost}>Cadastrar Tema</MenuItem>
+          </Link>
         </Menu>
       
         <Box display="flex" justifyContent="start">
@@ -104,7 +119,8 @@ function Navbar() {
           }}
         >
           <MenuItem onClick={handleCloseperf}>Perfil</MenuItem>
-          <MenuItem onClick={handleCloseperf}>Logout</MenuItem>
+          
+          <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>
       
       </Box>

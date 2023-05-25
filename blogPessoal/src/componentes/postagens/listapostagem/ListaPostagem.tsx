@@ -5,7 +5,7 @@ import { TextFormat } from "@material-ui/icons";
 import Postagem from "../../../models/Postagem";
 import useLocalStorage from "react-use-localstorage";
 import { busca } from "../../../service/Service";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
 
 function ListaPostagem() {
@@ -13,8 +13,8 @@ const [postagens, setPostagem] =useState<Postagem[]>([])
 const navigate = useNavigate();
 const [token, setToken] = useLocalStorage ('token');
 
-function getPostagem() {
-  busca('/postagens', setPostagem, {
+async function getPostagem() {
+await busca('/postagens', setPostagem, {
       headers: {
         Authorization: token
       }
@@ -23,14 +23,14 @@ function getPostagem() {
 
   useEffect(() => {
     getPostagem()
-  }, [])
+  }, [postagens.length])
 
   useEffect(() => {
     if(token === ''){
       alert('Por favor efetue o Login para acessar essa página')
-      navigate ('/login')
+      navigate('/login')
     }
-  }, [])
+  }, [token])
 
   return(
     <>
@@ -47,12 +47,16 @@ function getPostagem() {
             </CardContent>
             <CardActions>
               <ButtonGroup variant="outlined" aria-label="outlined button group">
+              <Link to={`/atualizartema/${postagem.id}`}>
                 <Button>
                   Editar
                 </Button>
+                </Link>
+                <Link to={`/deletartema/${postagem.id}`}>
                 <Button>
                   Apagar
                 </Button>
+                </Link>
               </ButtonGroup>
             </CardActions>
           </Card>
