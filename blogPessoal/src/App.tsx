@@ -10,10 +10,16 @@ import { Grid } from '@mui/material';
 import ListaPostagem from './componentes/postagens/listapostagem/ListaPostagem';
 import ListaTema from './componentes/temas/ListaTema';
 import CadastrarTema from './componentes/temas/cadastrartema/CadastrarTema';
+import DeletarTema from './componentes/temas/deletartema/DeletarTema';
+import FormularioPostagem from './componentes/postagens/cadastrarpostagem/CadastrarPostagem';
+import DeletarPostagem from './componentes/postagens/deletarpostagem/DeletarPostagem';
+import { Provider } from 'react-redux';
+import store from './store/Store';
 
 function App() {
   return (
     <>
+    <Provider store={store}>
     <BrowserRouter>
       <Navbar />
       <Grid container className='main'style={{ minHeight: '100vh' }}>
@@ -24,8 +30,12 @@ function App() {
           <Route path='/cadastrar' element={<Cadastrar />}/>
           <Route path='/postagens' element={<ListaPostagem />}/>
           <Route path='/temas' element={<ListaTema />}/>
+          <Route path='/formulariopostagens' element={<FormularioPostagem />}/>
+          <Route path='/formulariopostagens/:id' element={<FormularioPostagem />}/>
+          <Route path='/deletarpostagens/:id' element={<DeletarPostagem />}/>
           <Route path='/formulariotema' element={<CadastrarTema />}/>
           <Route path='/formulariotema/:id' element={<CadastrarTema />}/>
+          <Route path='/deletartema/:id' element={<DeletarTema />}/>
           
 
           
@@ -33,6 +43,7 @@ function App() {
       </Grid>
       <Footer />
     </BrowserRouter>
+    </Provider>
     </>
   )
 }

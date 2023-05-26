@@ -3,15 +3,19 @@ import React, { useEffect, useState } from "react";
 import './ListaPostagem.css'
 import { TextFormat } from "@material-ui/icons";
 import Postagem from "../../../models/Postagem";
-import useLocalStorage from "react-use-localstorage";
 import { busca } from "../../../service/Service";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function ListaPostagem() {
 const [postagens, setPostagem] =useState<Postagem[]>([])
 const navigate = useNavigate();
-const [token, setToken] = useLocalStorage ('token');
+const token = useSelector<TokenState, TokenState["tokens"] >(
+  (state) => state.tokens
+);
+
 
 async function getPostagem() {
 await busca('/postagens', setPostagem, {
@@ -34,38 +38,38 @@ await busca('/postagens', setPostagem, {
 
   return(
     <>
-    {postagens.map((postagem) => (
-      
-      <Grid container>
-        <Box className="boxlist">
-          <Card className="postagembox" >
-            <CardContent>
-              <Typography><h5>Título da Postagem{postagem.titulo}</h5></Typography>
-              <Typography><h4>Postagem: {postagem.id}</h4></Typography>
-              <Typography><h6>{postagem.texto}</h6></Typography>
-              <Typography><h6>{postagem.data}</h6></Typography>
-            </CardContent>
-            <CardActions>
-              <ButtonGroup variant="outlined" aria-label="outlined button group">
-              <Link to={`/atualizartema/${postagem.id}`}>
-                <Button>
-                  Editar
-                </Button>
-                </Link>
-                <Link to={`/deletartema/${postagem.id}`}>
-                <Button>
-                  Apagar
-                </Button>
-                </Link>
-              </ButtonGroup>
-            </CardActions>
-          </Card>
+    <Grid container className="listas">
+      <Grid container my={2} px={4}>
+      <Box display='flex' flexWrap={'wrap'} width={'100%'} className="boxlist">
+        {postagens.map((postagem) => (
+          <Grid item container xs={3}>
+          <Card className="card" >
+          <Typography className="titulocard">{postagem.titulo}</Typography>
           
-        </Box>
-      </Grid>
-    ))}
-
-    </>
+          <Box className="textocard">
+          <Typography>{postagem.texto}</Typography>
+          </Box>
+          
+          <Typography>{new Intl.DateTimeFormat('pt-br', {
+            dateStyle: 'full'
+          }).format(new Date(postagem.data))}</Typography>
+          
+          <Typography>Tema: {postagem.tema?.descricao}</Typography>
+          <Box display={'flex'} gap={4} >
+            <Link to={`/formularioPostagem/${postagem.id}`}>
+              <Button fullWidth variant='contained' className="buttoneditar">editar</Button>
+            </Link>
+            <Link to={`/apagarPostagem/${postagem.id}`}>
+              <Button fullWidth variant='contained' className="buttonapagar">apagar</Button>
+            </Link>
+          </Box>
+          </Card>
+        </Grid>
+        ))}
+      </Box>
+    </Grid>
+    </Grid>
+  </>
   );
 }
 

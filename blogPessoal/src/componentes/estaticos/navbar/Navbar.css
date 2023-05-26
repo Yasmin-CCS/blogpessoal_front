@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 #menubutton{
   border:none;
 }
@@ -37,6 +37,8 @@ h5{
 
 #logo{
   font-weight: bolder;
+  font-family: "Lobster", cursive !important;
+  letter-spacing: 2px;
 }
 
 .txtdecorationnone{

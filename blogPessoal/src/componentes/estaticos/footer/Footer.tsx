@@ -5,11 +5,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import './footer.css'
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { useSelector } from 'react-redux';
 
 function Footer(){
-  return(
-    
-   
+  const token = useSelector<TokenState, TokenState["tokens"] >(
+    (state) => state.tokens
+  );
+
+  var footerComponent;
+
+  if(token !== "") {
     <Box
       component="footer" id="footer"
       sx={{
@@ -24,6 +30,13 @@ function Footer(){
         </Typography>
       </Container>
     </Box>
+
+  }
+
+
+  return(
+    
+   {footerComponent}
  
   );
 }

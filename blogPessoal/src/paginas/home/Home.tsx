@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Box, Button, Grid, Typography} from '@material-ui/core';
 import './Home.css';
 import TabsPostagem from '../../componentes/postagens/tabpostagem/TabsPostagem';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
 
 function Home() {
+  let navigate = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"] >(
+    (state) => state.tokens
+  );
+
+  useEffect(() => {
+    if (token == "") {
+      alert("Você precisa estar logado")
+      navigate("/login")
+    }
+  }, [token])
+
   return(
     <>
     <Grid container className='main'>

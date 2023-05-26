@@ -1,21 +1,46 @@
-.postagembox h6, .postagembox h5{
-  color: brown;
-}
-
-.postagembox {
-  display:flex;
-   flex-direction:column;
-   
-}
 
 .boxlist{
   display:flex;
   flex-wrap:wrap;
   justify-content:flex-start;
-  align-content:space-around;
-  width:100%;
+  align-content:flex-start;
   gap:50px;
   padding-left: 80px;
   padding-right: 80px;
 
+}
+
+.listas{
+  background-color: antiquewhite;
+}
+
+.card{
+  padding:25px;
+  background-color: rgba(59, 39, 0, 0.174) !important;
+  display: flex !important;
+  flex-direction: column;
+  flex-wrap: wrap !important;
+  flex-shrink: 0.1 !important;
+  gap: 10px;
+}
+
+.titulocard {
+  font-weight: 700 !important;
+
+}
+
+.grupobuttons{
+  display: flex;
+  align-items: baseline !important;
+}
+
+.textocard{
+}
+
+.buttonapagar{
+  background-color: rgba(255, 0, 0, 0.535) !important;
+}
+
+.buttoneditar{
+  background-color: rgba(144, 0, 255, 0.479) !important;
 }
