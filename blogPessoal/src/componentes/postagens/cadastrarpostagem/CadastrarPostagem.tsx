@@ -17,6 +17,7 @@ import { busca, buscaId, post, put } from '../../../service/Service';
 import Tema  from '../../../models/Tema';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 function FormularioPostagem() {
@@ -105,7 +106,16 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
-        alert('foi - atualização')
+        toast.success('Postagem atualizada com sucesso',{
+          position:'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          progress: undefined,
+        })
         navigate('/postagens')
       } catch (error) {
         alert('deu erro');
@@ -117,7 +127,16 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
-        alert('foi - cadastro')
+        toast.success('Postagem cadastrada com sucesso',{
+          position:'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          progress: undefined,
+        })
         navigate('/postagens')
       } catch (error) {
         alert('deu erro');

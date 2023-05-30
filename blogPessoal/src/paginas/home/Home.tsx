@@ -5,6 +5,7 @@ import TabsPostagem from '../../componentes/postagens/tabpostagem/TabsPostagem';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 function Home() {
   let navigate = useNavigate();
@@ -14,7 +15,16 @@ function Home() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error('Usuario deslogado',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
       navigate("/login")
     }
   }, [token])

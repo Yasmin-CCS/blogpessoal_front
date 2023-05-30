@@ -15,14 +15,18 @@ import FormularioPostagem from './componentes/postagens/cadastrarpostagem/Cadast
 import DeletarPostagem from './componentes/postagens/deletarpostagem/DeletarPostagem';
 import { Provider } from 'react-redux';
 import store from './store/Store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function App() {
   return (
     <>
     <Provider store={store}>
+      <ToastContainer></ToastContainer>
     <BrowserRouter>
       <Navbar />
-      <Grid container className='main'style={{ minHeight: '100vh' }}>
+      <Grid container className='main'style={{ minHeight: '110vh' }}>
         <Routes>
           <Route path='/' element={<Login />}/> 
           <Route path='/login' element={<Login />}/>  

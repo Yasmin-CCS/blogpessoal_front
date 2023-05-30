@@ -7,9 +7,10 @@ import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/actions';
+import { toast } from 'react-toastify';
 
 function Login() {
-  let history = useNavigate();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
@@ -29,7 +30,7 @@ function Login() {
       useEffect(()=>{
         if(token != ''){
           dispatch(addToken(token))
-          history('/home')
+          navigate('/home')
         }
       }, [token])
 
@@ -39,9 +40,27 @@ function Login() {
       const resposta = await api.post('/usuarios/logar', usuarioLogin)
       setToken(resposta.data.token)
 
-      alert("Usuario Logado com sucesso!")
+      toast.success('Usuário logado com sucesso',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
     }catch(error){
-      alert('Dados do usuário inconsistentes. Eroo ao logar!');
+      toast.error('Dados incorretos, por favor confira antes de prosseguir',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      });
     }
     
     login('usuarios/logar', usuarioLogin, setUsuarioLogin)

@@ -8,6 +8,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Card, CardActions, CardContent } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
 
 function ListaPostagem() {
 const [postagens, setPostagem] =useState<Postagem[]>([])
@@ -31,7 +32,16 @@ await busca('/postagens', setPostagem, {
 
   useEffect(() => {
     if(token === ''){
-      alert('Por favor efetue o Login para acessar essa página')
+      toast.error('Você precisa estar logado para acessar essa página',{
+        position:'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
       navigate('/login')
     }
   }, [token])

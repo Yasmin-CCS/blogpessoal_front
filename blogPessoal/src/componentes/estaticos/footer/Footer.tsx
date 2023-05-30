@@ -16,7 +16,7 @@ function Footer(){
   var footerComponent;
 
   if(token !== "") {
-    <Box
+   footerComponent = <Box
       component="footer" id="footer"
       sx={{
         py: 3,
@@ -35,9 +35,9 @@ function Footer(){
 
 
   return(
-    
+    <>
    {footerComponent}
- 
+   </>
   );
 }
 

@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { buscaId, post, put } from "../../../service/Service";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
 
 
 function CadastrarTema() {
@@ -22,7 +23,16 @@ function CadastrarTema() {
   
   useEffect(() => {
     if(token === ''){
-      alert('Por favor efetue o Login para acessar essa página')
+      toast.error('Você precisa estar logado para acessar essa página',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
       navigate('/login')
     }
   }, [token])
@@ -59,14 +69,32 @@ function CadastrarTema() {
           Authorization: token
         }
       })
-      alert('Tema atualizado com sucesso');
+      toast.success('Tema atualizada com sucesso',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
     } else {
       post('/temas', tema, setTema, {
         headers: {
           Authorization: token
         }
       })
-      alert('Tema cadastrado com sucesso')
+      toast.success('Tema cadastrada com sucesso',{
+        position:'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        progress: undefined,
+      })
     }
     navigate('/temas')
   }

@@ -39,10 +39,10 @@ async function getTema() {
 
   return(
     <>
-    {temas.map((tema) => (
       
       <Grid container>
         <Box className="boxlist">
+    {temas.map((tema) => (
           <Card className="postagembox" >
             <CardContent>
               <Typography><h5>{tema.descricao}</h5></Typography>
@@ -64,10 +64,11 @@ async function getTema() {
               </ButtonGroup>
             </CardActions>
           </Card>
+          ))}
           </Box>
         </Grid>
           
-          ))}
+          
 
     </>
   );

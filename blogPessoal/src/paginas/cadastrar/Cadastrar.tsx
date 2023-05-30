@@ -6,6 +6,7 @@ import useLocalStorage from 'react-use-localstorage';
 import { api } from '../../service/Service';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../service/Service';
+import { toast } from 'react-toastify';
 
 function Cadastrar() {
 
@@ -49,9 +50,27 @@ function Cadastrar() {
   event.preventDefault
   if(confirmarSenha === usuario.senha){
     cadastrarUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
-    alert('Usuario cadastrado com sucesso, clique para Login')
+    toast.success('Usuario cadastrado com sucesso!',{
+      position:'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      progress: undefined,
+    })
   }else{
-      alert('Dados inconsistentes. Por favor verifique as informações')
+    toast.error('Dados inconsistentes, por favor confira',{
+      position:'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      progress: undefined,
+    })
     }}
 
   return(
