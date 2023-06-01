@@ -6,7 +6,7 @@ import { api } from '../../service/Service';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
-import { addToken } from '../../store/tokens/actions';
+import { addId, addToken } from '../../store/tokens/actions';
 import { toast } from 'react-toastify';
 
 function Login() {
@@ -19,6 +19,13 @@ function Login() {
     senha:'',
  
     token:''
+  })
+
+  const [respUsuarioLogin, setRespUsuarioLogin] = useState<UsuarioLogin>({
+    id: 0,
+    usuario: '',
+    senha: '',
+    token: ''
   })
 
   function updateModel(event: ChangeEvent<HTMLInputElement>){
@@ -37,9 +44,8 @@ function Login() {
   async function enviar(event: ChangeEvent<HTMLFormElement>){
     event.preventDefault();
     try{
-      const resposta = await api.post('/usuarios/logar', usuarioLogin)
-      setToken(resposta.data.token)
-
+      await login('/usuarios/logar', usuarioLogin, setRespUsuarioLogin);
+      
       toast.success('Usuário logado com sucesso',{
         position:'top-center',
         autoClose: 5000,
@@ -62,9 +68,15 @@ function Login() {
         progress: undefined,
       });
     }
-    
-    login('usuarios/logar', usuarioLogin, setUsuarioLogin)
   }
+
+  useEffect(() => {
+    if(respUsuarioLogin.token !== '') {
+      dispatch(addToken(respUsuarioLogin.token))
+      dispatch(addId(respUsuarioLogin.id.toString()))
+      navigate('/home');
+    }
+  }, [respUsuarioLogin.token])
 
   return(
     <>

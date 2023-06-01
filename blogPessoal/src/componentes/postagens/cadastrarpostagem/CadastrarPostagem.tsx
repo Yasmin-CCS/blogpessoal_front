@@ -18,12 +18,13 @@ import Tema  from '../../../models/Tema';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import Usuario from '../../../models/Usuario';
 
 
 function FormularioPostagem() {
   const navigate = useNavigate();
-  const token = useSelector<TokenState, TokenState["tokens"] >(
-    (state) => state.tokens
+  const token = useSelector<TokenState, TokenState["token"] >(
+    (state) => state.token
   );
 
   const { id } = useParams<{ id: string }>();
@@ -41,7 +42,19 @@ function FormularioPostagem() {
     texto: '',
     data: '',
     tema: null,
+    usuario: null
   });
+
+  const userId = useSelector<TokenState, TokenState['id']>(
+    (state) => state.id
+  )
+
+  const [usuario, setusuario] =useState<Usuario>({
+    id:+userId,
+    nome:'',
+    usuario:'',
+    senha:'',
+  })
 
   useEffect(() => {
     if(token === ''){ 
@@ -93,6 +106,7 @@ function FormularioPostagem() {
     setPostagem({
       ...postagem,
       tema: tema,
+      usuario: usuario
     });
   }, [tema]);
 

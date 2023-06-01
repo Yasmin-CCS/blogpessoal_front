@@ -12,8 +12,8 @@ import { TokenState } from "../../store/tokens/tokensReducer";
 function ListaTema() {
 const [temas, setTema] =useState<Tema[]>([])
 const navigate = useNavigate();
-const token = useSelector<TokenState, TokenState["tokens"] >(
-  (state) => state.tokens
+const token = useSelector<TokenState, TokenState["token"] >(
+  (state) => state.token
 );
 
 

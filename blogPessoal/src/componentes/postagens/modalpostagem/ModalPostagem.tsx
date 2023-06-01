@@ -60,7 +60,7 @@ function ModalPostagem () {
   return (
     <div>
       <Typography
-        className="homeinfos"
+        className="homeinfos tabhome"
         onClick={handleOpen}>NOVA POSTAGEM</Typography>
       <Modal
         open={open}
