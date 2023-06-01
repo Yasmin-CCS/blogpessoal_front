@@ -48,8 +48,8 @@ function Navbar() {
     })
     navigate('/login')
   }
-  const token = useSelector<TokenState, TokenState["tokens"] >(
-    (state) => state.tokens
+  const token = useSelector<TokenState, TokenState["token"] >(
+    (state) => state.token
   );
 
   const dispatch = useDispatch();
@@ -61,9 +61,11 @@ function Navbar() {
     <Toolbar variant="dense" id="nav">
       <Grid container justifyContent={'space-between'} className="navlist">
             <Box style={{ cursor: "pointer" }} >
+            <Link to='/home'>
             <Typography variant="h5" id="logo">
                 Diário de Bordo
             </Typography>
+            </Link>
         </Box>
   
         <Box display="flex" justifyContent="start" className="navlist">
@@ -92,26 +94,35 @@ function Navbar() {
             </Box>
             <Menu
             id="menupostagem"
+            
             anchorEl={anchorElpost}
             open={openpost}
             onClose={handleClosepost}
             MenuListProps={{
               'aria-labelledby': 'postagem-button',
             }}>          
-            
+              
+            <Box display="flex" flexDirection={"column"} className="menunav">
             <Link to='/postagens'>
             <MenuItem onClick={handleClosepost} className='txtdecorationnone'>Minhas Postagens</MenuItem>
             </Link>
+            
+
+            
             <Link to='/formulariopostagens'>
-            <MenuItem onClick={handleClosepost}>Nova Postagem</MenuItem>
+            
+            <MenuItem onClick={handleClosepost} ><Typography>Nova Postagem</Typography></MenuItem>
+            
             </Link>
-          
+            
+
             <Link to='/temas'>
             <MenuItem onClick={handleClosepost}>Meus Temas</MenuItem>
             </Link>
             <Link to='/formulariotema'>
             <MenuItem onClick={handleClosepost}>Cadastrar Tema</MenuItem>
             </Link>
+            </Box>
           </Menu>
         
           <Box display="flex" justifyContent="start">
@@ -137,9 +148,11 @@ function Navbar() {
               'aria-labelledby': 'perfil-button',
             }}
           >
+            <Box display="flex" flexDirection={"column"} className="menunav">
             <MenuItem onClick={handleCloseperf}>Perfil</MenuItem>
             
             <MenuItem onClick={logout}>Logout</MenuItem>
+            </Box>
           </Menu>
         
         </Box>

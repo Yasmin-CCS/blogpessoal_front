@@ -8,8 +8,8 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 
 function DeletarPostagem() {
-  const token = useSelector<TokenState, TokenState["tokens"] >(
-    (state) => state.tokens
+  const token = useSelector<TokenState, TokenState["token"] >(
+    (state) => state.token
   );
   
   const navigate = useNavigate();

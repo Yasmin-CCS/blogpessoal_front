@@ -16,14 +16,15 @@ function TabsPostagem() {
   };
 
   return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
+    <Box sx={{ width: '100%'}}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }} display={'flex'}  alignItems="center" justifyContent={"center"}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }} display={'flex'}  alignItems="center" justifyContent={"center"} >
+          <TabList onChange={handleChange} >
             <Tab  label="Postagens" value="1"/>
-            <Tab label="Sobre" value="2"/>
+            <Tab  label="Sobre" value="2"/>
             
         </TabList>
+
               <ModalPostagem/>
         </Box>
         <TabPanel value="1"><ListaPostagem/></TabPanel>

@@ -44,3 +44,11 @@ h5{
 .txtdecorationnone{
   text-decoration: none !important;
 }
+
+.menunav{
+  padding-right: 7px !important; 
+  padding-left: 7px !important;
+  justify-content: space-evenly !important;
+  align-items: space-around !important;
+}
+
